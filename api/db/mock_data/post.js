@@ -8,7 +8,7 @@ const generatePosts = () => {
     user_id: faker.number.int({ min: 1, max: 10}),
     title: faker.word.words({ min: 1, max: 3}),
     description: faker.lorem.sentences({ min: 1, max: 6}),
-    category: [faker.helpers.arrayElements(category)]
+    category: faker.helpers.arrayElements(category)
   })
 }
 

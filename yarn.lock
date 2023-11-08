@@ -2331,6 +2331,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@faker-js/faker@npm:^8.2.0":
+  version: 8.2.0
+  resolution: "@faker-js/faker@npm:8.2.0"
+  checksum: 0b7c29714f61d9e862baad29f43c016f0d3ba4b22ba1ebc963e587f15744c145b4e3a4dc8b328dc139472a75fa19e769d53986e158e717fedf5b64862bbbfec7
+  languageName: node
+  linkType: hard
+
 "@fastify/accept-negotiator@npm:^1.0.0":
   version: 1.1.0
   resolution: "@fastify/accept-negotiator@npm:1.1.0"
@@ -6658,6 +6665,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "api@workspace:api"
   dependencies:
+    "@faker-js/faker": ^8.2.0
     "@redwoodjs/api": 6.3.2
     "@redwoodjs/auth-dbauth-api": 6.3.2
     "@redwoodjs/graphql-server": 6.3.2

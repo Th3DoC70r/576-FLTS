@@ -12,7 +12,7 @@ const generateEvents = () => {
       to: '2024-01-01T00:00:00:000Z'
     }),
     address: faker.location.streetAddress(),
-    type: [faker.helpers.arrayElements(type)],
+    type: faker.helpers.arrayElements(['official', 'morale'])[0],
     flier: faker.datatype.boolean(),
     image: faker.image.url()
   })
