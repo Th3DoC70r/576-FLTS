@@ -22,6 +22,7 @@ model user {
   updatedAt DateTime @default(now()) @updatedAt
   roles String[] @default(["user"])
   image String?
+  post post[]
 }
 
 model item {
@@ -31,6 +32,7 @@ model item {
   price String
   type String[]
   image String
+  stock Int
 }
 
 model post {
@@ -39,9 +41,9 @@ model post {
   title String
   description String
   category String[]
-  createdAt @DateTime @default(now())
+  createdAt DateTime @default(now())
   updatedAt DateTime @default(now()) @updatedAt
-  user User @relation(fields: [user_id], references: [id], onDelete: Cascade)
+  user user @relation(fields: [user_id], references: [id], onDelete: Cascade)
 }
 
 model event {
@@ -55,7 +57,7 @@ model event {
   type String
 }
 
-model requirements {
+model requirement {
   id Int @id @default(autoincrement())
   title String
   description String
@@ -70,5 +72,4 @@ model orders {
   shipped Boolean @default(false)
   delivered Boolean @default(false)
   item_ids String[]
-  item @relation(fields: [item_ids], references: [id], onDelete: Cascade)
 }
