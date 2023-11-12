@@ -1,14 +1,14 @@
 import { render } from '@redwoodjs/testing/web'
 
-import Shop from './Shop'
+import Footer from './Footer'
 
 //   Improve this test with help from the Redwood Testing Doc:
 //    https://redwoodjs.com/docs/testing#testing-components
 
-describe('Shop', () => {
+describe('Footer', () => {
   it('renders successfully', () => {
     expect(() => {
-      render(<Shop />)
+      render(<Footer />)
     }).not.toThrow()
   })
 })

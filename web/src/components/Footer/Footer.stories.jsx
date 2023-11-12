@@ -10,8 +10,8 @@
 //
 // See https://storybook.js.org/docs/react/writing-stories/args.
 
-import Shop from './Shop'
+import Footer from './Footer'
 
-export default { component: Shop }
+export default { component: Footer }
 
 export const Primary = {}

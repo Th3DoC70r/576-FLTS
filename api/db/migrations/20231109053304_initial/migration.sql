@@ -1,5 +1,5 @@
 -- CreateTable
-CREATE TABLE "user" (
+CREATE TABLE "User" (
     "id" SERIAL NOT NULL,
     "email" TEXT NOT NULL,
     "name" TEXT NOT NULL,
@@ -12,11 +12,11 @@ CREATE TABLE "user" (
     "roles" TEXT[] DEFAULT ARRAY['user']::TEXT[],
     "image" TEXT,
 
-    CONSTRAINT "user_pkey" PRIMARY KEY ("id")
+    CONSTRAINT "User_pkey" PRIMARY KEY ("id")
 );
 
 -- CreateTable
-CREATE TABLE "item" (
+CREATE TABLE "Item" (
     "id" SERIAL NOT NULL,
     "name" TEXT NOT NULL,
     "description" TEXT NOT NULL,
@@ -25,11 +25,11 @@ CREATE TABLE "item" (
     "image" TEXT NOT NULL,
     "stock" INTEGER NOT NULL,
 
-    CONSTRAINT "item_pkey" PRIMARY KEY ("id")
+    CONSTRAINT "Item_pkey" PRIMARY KEY ("id")
 );
 
 -- CreateTable
-CREATE TABLE "post" (
+CREATE TABLE "Post" (
     "id" SERIAL NOT NULL,
     "user_id" INTEGER NOT NULL,
     "title" TEXT NOT NULL,
@@ -38,11 +38,11 @@ CREATE TABLE "post" (
     "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "updatedAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
 
-    CONSTRAINT "post_pkey" PRIMARY KEY ("id")
+    CONSTRAINT "Post_pkey" PRIMARY KEY ("id")
 );
 
 -- CreateTable
-CREATE TABLE "event" (
+CREATE TABLE "Event" (
     "id" SERIAL NOT NULL,
     "title" TEXT NOT NULL,
     "description" TEXT,
@@ -52,20 +52,20 @@ CREATE TABLE "event" (
     "address" TEXT NOT NULL,
     "type" TEXT NOT NULL,
 
-    CONSTRAINT "event_pkey" PRIMARY KEY ("id")
+    CONSTRAINT "Event_pkey" PRIMARY KEY ("id")
 );
 
 -- CreateTable
-CREATE TABLE "requirement" (
+CREATE TABLE "Requirement" (
     "id" SERIAL NOT NULL,
     "title" TEXT NOT NULL,
     "description" TEXT NOT NULL,
 
-    CONSTRAINT "requirement_pkey" PRIMARY KEY ("id")
+    CONSTRAINT "Requirement_pkey" PRIMARY KEY ("id")
 );
 
 -- CreateTable
-CREATE TABLE "orders" (
+CREATE TABLE "Orders" (
     "id" SERIAL NOT NULL,
     "name" TEXT NOT NULL,
     "address" TEXT NOT NULL,
@@ -75,11 +75,11 @@ CREATE TABLE "orders" (
     "delivered" BOOLEAN NOT NULL DEFAULT false,
     "item_ids" TEXT[],
 
-    CONSTRAINT "orders_pkey" PRIMARY KEY ("id")
+    CONSTRAINT "Orders_pkey" PRIMARY KEY ("id")
 );
 
 -- CreateIndex
-CREATE UNIQUE INDEX "user_email_key" ON "user"("email");
+CREATE UNIQUE INDEX "User_email_key" ON "User"("email");
 
 -- AddForeignKey
-ALTER TABLE "post" ADD CONSTRAINT "post_user_id_fkey" FOREIGN KEY ("user_id") REFERENCES "user"("id") ON DELETE CASCADE ON UPDATE CASCADE;
+ALTER TABLE "Post" ADD CONSTRAINT "Post_user_id_fkey" FOREIGN KEY ("user_id") REFERENCES "User"("id") ON DELETE CASCADE ON UPDATE CASCADE;
