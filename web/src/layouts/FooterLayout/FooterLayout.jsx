@@ -2,7 +2,7 @@ const FooterLayout = ({ children }) => {
   return (
     <>
       <main>{children}</main>
-      <footer className="flex flex-col border-t-4 border-LightBlue bg-Blue p-4">
+      <footer className="flex h-full flex-col border-t-4 border-LightBlue bg-Blue p-4">
         <p className="text-center text-3xl font-bold text-white">About Us</p>
         <p className="text-center text-xl font-semibold text-white">
           This site was coded by:

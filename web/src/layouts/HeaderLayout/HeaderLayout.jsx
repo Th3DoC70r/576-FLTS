@@ -18,12 +18,12 @@ const HeaderLayout = ({ children }) => {
         </p>
         {isAuthenticated ? (
           <div className="flex flex-row items-center">
-            <img src={currentUser.image} alt={currentUser.name} />
+            <img src={currentUser?.image} alt={currentUser?.name} />
             <button
               className="text-3xl font-semibold text-white"
               onClick={() => setOpen(!open)}
             >
-              {currentUser.name}
+              {currentUser?.name}
             </button>
           </div>
         ) : (
