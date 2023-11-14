@@ -1,14 +1,14 @@
 import { render } from '@redwoodjs/testing/web'
 
-import Footer from './Footer'
+import CartModal from './CartModal'
 
 //   Improve this test with help from the Redwood Testing Doc:
 //    https://redwoodjs.com/docs/testing#testing-components
 
-describe('Footer', () => {
+describe('CartModal', () => {
   it('renders successfully', () => {
     expect(() => {
-      render(<Footer />)
+      render(<CartModal />)
     }).not.toThrow()
   })
 })

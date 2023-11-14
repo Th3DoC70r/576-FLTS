@@ -1,14 +1,14 @@
 import { render } from '@redwoodjs/testing/web'
 
-import Header from './Header'
+import CartItemCard from './CartItemCard'
 
 //   Improve this test with help from the Redwood Testing Doc:
 //    https://redwoodjs.com/docs/testing#testing-components
 
-describe('Header', () => {
+describe('CartItemCard', () => {
   it('renders successfully', () => {
     expect(() => {
-      render(<Header />)
+      render(<CartItemCard />)
     }).not.toThrow()
   })
 })
