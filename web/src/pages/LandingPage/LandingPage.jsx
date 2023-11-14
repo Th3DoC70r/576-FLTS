@@ -1,20 +1,32 @@
+import SqPatch from 'web/public/SqPatch.svg'
+
 import { Link, routes } from '@redwoodjs/router'
-import { MetaTags } from '@redwoodjs/web'
 
 const LandingPage = () => {
   return (
-    <>
-      <MetaTags title="Landing" description="Landing page" />
-
-      <h1>LandingPage</h1>
-      <p>
-        Find me in <code>./web/src/pages/LandingPage/LandingPage.jsx</code>
-      </p>
-      <p>
-        My default route is named <code>landing</code>, link to me with `
-        <Link to={routes.landing()}>Landing</Link>`
-      </p>
-    </>
+    <div className="m-4 flex flex-col items-center justify-center gap-4">
+      <img src={SqPatch} alt="576th FLTS Squadron Patch" />
+      <div className="flex flex-row gap-4">
+        <Link
+          className="rounded-lg bg-Blue px-3 py-1 text-2xl font-semibold text-white"
+          to={routes.shop()}
+        >
+          Shop
+        </Link>
+        <Link
+          className="rounded-lg bg-Blue px-3 py-1 text-2xl font-semibold text-white"
+          to={routes.shop()}
+        >
+          Instagram
+        </Link>
+        <Link
+          className="rounded-lg bg-Blue px-3 py-1 text-2xl font-semibold text-white"
+          to={routes.login()}
+        >
+          Login
+        </Link>
+      </div>
+    </div>
   )
 }
 

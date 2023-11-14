@@ -10,8 +10,8 @@
 //
 // See https://storybook.js.org/docs/react/writing-stories/args.
 
-import Footer from './Footer'
+import CartModal from './CartModal'
 
-export default { component: Footer }
+export default { component: CartModal }
 
 export const Primary = {}

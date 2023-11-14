@@ -10,8 +10,8 @@
 //
 // See https://storybook.js.org/docs/react/writing-stories/args.
 
-import Header from './Header'
+import CartItemCard from './CartItemCard'
 
-export default { component: Header }
+export default { component: CartItemCard }
 
 export const Primary = {}
