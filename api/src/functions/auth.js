@@ -141,7 +141,7 @@ export const handler = async (event, context) => {
     authFields: {
       id: 'id',
       username: 'email',
-      hashedPassword: 'hashedPassword',
+      hashedPassword: 'password',
       salt: 'salt',
       resetToken: 'resetToken',
       resetTokenExpiresAt: 'resetTokenExpiresAt',
