@@ -20,7 +20,7 @@ const LoginPage = () => {
 
   useEffect(() => {
     if (isAuthenticated) {
-      navigate(routes.home())
+      navigate(routes.landing())
     }
   }, [isAuthenticated])
 
@@ -34,7 +34,6 @@ const LoginPage = () => {
       username: data.email,
       password: data.password,
     })
-
     if (response.message) {
       toast(response.message)
     } else if (response.error) {

@@ -24,8 +24,12 @@ const PageLayout = ({ children }) => {
         </div>
         <div className="justify-self-end">
           {isAuthenticated ? (
-            <div className="flex flex-row items-center">
-              <img src={currentUser?.image} alt={currentUser?.name} />
+            <div className="flex flex-row items-center gap-4">
+              <img
+                className="h-16 w-16"
+                src={currentUser?.image}
+                alt={currentUser?.name}
+              />
               <button
                 className="text-3xl font-semibold text-white"
                 onClick={() => setOpen(!open)}
