@@ -11,65 +11,76 @@ generator client {
 // Define your own datamodels here and run `yarn redwood prisma migrate dev`
 // to create migrations for them and apply to your dev DB.
 model User {
-  id    Int     @id @default(autoincrement())
-  email String  @unique
-  name  String
-  password String
-  salt String
-  authenticated Boolean? @default(false)
-  reason String
-  createdAt DateTime  @default(now())
-  updatedAt DateTime @default(now()) @updatedAt
-  roles String[] @default(["user"])
-  image String?
-  post Post[]
+  id            Int        @id @default(autoincrement())
+  email         String     @unique
+  name          String
+  password      String
+  salt          String
+  authenticated Boolean?   @default(false)
+  reason        String
+  createdAt     DateTime   @default(now())
+  updatedAt     DateTime   @default(now()) @updatedAt
+  roles         String[]   @default(["user"])
+  image         String?
+  post          Post[]
+  cart          CartItem[]
 }
 
 model Item {
-  id    Int   @id @default(autoincrement())
-  name String
+  id          Int        @id @default(autoincrement())
+  name        String
   description String
-  price String
-  type String[]
-  image String
-  stock Int
+  price       String
+  type        String[]
+  image       String
+  stock       Int
+  cart        CartItem[]
 }
 
 model Post {
-  id Int @id @default(autoincrement())
-  user_id Int
-  title String
+  id          Int      @id @default(autoincrement())
+  user_id     Int
+  title       String
   description String
-  category String[]
-  createdAt DateTime @default(now())
-  updatedAt DateTime @default(now()) @updatedAt
-  user User @relation(fields: [user_id], references: [id], onDelete: Cascade)
+  category    String[]
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @default(now()) @updatedAt
+  user        User     @relation(fields: [user_id], references: [id], onDelete: Cascade)
 }
 
 model Event {
-  id Int @id @default(autoincrement())
-  title String
+  id          Int      @id @default(autoincrement())
+  title       String
   description String?
-  date DateTime
-  flier Boolean
-  image String?
-  address String
-  type String
+  date        DateTime
+  flier       Boolean
+  image       String?
+  address     String
+  type        String
 }
 
 model Requirement {
-  id Int @id @default(autoincrement())
-  title String
+  id          Int    @id @default(autoincrement())
+  title       String
   description String
 }
 
 model Orders {
-  id Int @id @default(autoincrement())
-  name String
-  address String
-  method String
-  total Int
-  shipped Boolean @default(false)
-  delivered Boolean @default(false)
-  item_ids String[]
+  id        Int      @id @default(autoincrement())
+  name      String
+  address   String
+  method    String
+  total     Int
+  shipped   Boolean  @default(false)
+  delivered Boolean  @default(false)
+  item_ids  String[]
+}
+
+model CartItem {
+  id       Int  @id @default(autoincrement())
+  userId   Int
+  itemId   Int
+  quantity Int
+  user     User @relation(fields: [userId], references: [id])
+  item     Item @relation(fields: [itemId], references: [id])
 }
