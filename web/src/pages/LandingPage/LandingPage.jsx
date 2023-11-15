@@ -1,6 +1,12 @@
 import SqPatch from 'web/public/SqPatch.svg'
 
-import { MdOutlineStorefront } from 'react-icons/md'
+import {
+  MdOutlineStorefront,
+  MdOutlineForum,
+  MdOutlineShoppingCart,
+  MdOutlineChecklist,
+  MdOutlineEvent,
+} from 'react-icons/md'
 import { AiFillInstagram } from 'react-icons/ai'
 
 import { Link, routes } from '@redwoodjs/router'
@@ -15,7 +21,7 @@ const LandingPage = () => {
   const { isAuthenticated, currentUser } = useAuth()
 
   return (
-    <div className="m-4 flex flex-col items-center justify-center gap-4">
+    <>
       {isAuthenticated ? (
         <TabComponent
           data={[
@@ -24,7 +30,7 @@ const LandingPage = () => {
               value: 'shop',
               icon: <MdOutlineStorefront size={24} />,
               content: (
-                <div className="flex flex-wrap justify-center">
+                <div className="flex w-full flex-wrap justify-center self-stretch">
                   <ItemsCell />
                 </div>
               ),
@@ -35,11 +41,35 @@ const LandingPage = () => {
               icon: <AiFillInstagram size={24} />,
               content: <div>Hi</div>,
             },
+            {
+              label: 'Forums',
+              value: 'forums',
+              icon: <MdOutlineForum size={24} />,
+              content: <div>Hi</div>,
+            },
+            {
+              label: 'Events',
+              value: 'events',
+              icon: <MdOutlineEvent size={24} />,
+              content: <div>Hi</div>,
+            },
+            {
+              label: 'Top Hand',
+              value: 'topHand',
+              icon: <MdOutlineChecklist size={24} />,
+              content: <div>Hi</div>,
+            },
+            {
+              label: 'Cart',
+              value: 'cart',
+              icon: <MdOutlineShoppingCart size={24} />,
+              content: <div>Hi</div>,
+            },
           ]}
           active={'shop'}
         />
       ) : (
-        <>
+        <div className="m-4 flex flex-col items-center justify-center gap-4">
           <img src={SqPatch} alt="576th FLTS Squadron Patch" />
           <div className="flex flex-row gap-4">
             <Link
@@ -60,10 +90,10 @@ const LandingPage = () => {
             >
               Login
             </Link>
-          </div>{' '}
-        </>
+          </div>
+        </div>
       )}
-    </div>
+    </>
   )
 }
 

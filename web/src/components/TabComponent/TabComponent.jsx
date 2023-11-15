@@ -27,7 +27,7 @@ const TabComponent = ({ data, active }) => {
   return (
     <Tabs
       value={activeTab}
-      className="flex w-full flex-col justify-center self-stretch"
+      className="min-w-screen mx-1 mt-4 flex w-full flex-grow flex-col self-stretch"
     >
       <TabsHeader
         className={`flex w-full gap-2 self-stretch rounded-none border-b bg-transparent p-0`}
@@ -45,7 +45,7 @@ const TabComponent = ({ data, active }) => {
                 className={`h-1/8 w-fit rounded-lg rounded-b-none border border-b-0 transition hover:underline ${
                   activeTab === value
                     ? 'bg-TetherLightGreen text-black transition'
-                    : 'bg-transparent text-gray-400 hover:text-white'
+                    : 'bg-transparent text-gray-400 hover:text-black'
                 }`}
               >
                 <div className="flex flex-row items-center gap-2 p-1">
