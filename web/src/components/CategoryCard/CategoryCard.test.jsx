@@ -1,14 +1,14 @@
 import { render } from '@redwoodjs/testing/web'
 
-import HeaderLayout from './HeaderLayout'
+import CategoryCard from './CategoryCard'
 
 //   Improve this test with help from the Redwood Testing Doc:
-//   https://redwoodjs.com/docs/testing#testing-pages-layouts
+//    https://redwoodjs.com/docs/testing#testing-components
 
-describe('HeaderLayout', () => {
+describe('CategoryCard', () => {
   it('renders successfully', () => {
     expect(() => {
-      render(<HeaderLayout />)
+      render(<CategoryCard />)
     }).not.toThrow()
   })
 })

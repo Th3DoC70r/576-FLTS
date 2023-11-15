@@ -12,12 +12,12 @@ const generateUser = () => {
     name: `${firstName} ${lastName}`,
     password: hashedPassword,
     salt: salt,
-    email: faker.internet.email({ firstName, lastName}),
+    email: faker.internet.email({ firstName, lastName }),
     roles: ['user'],
     image: faker.image.url(),
     authenticated: faker.datatype.boolean(),
     reason: faker.lorem.sentence(),
-    image: faker.image.avatar()
+    image: faker.image.avatar(),
   })
 }
 
