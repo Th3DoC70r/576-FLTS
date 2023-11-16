@@ -1,5 +1,9 @@
 import SqPatch from 'web/public/SqPatch.svg'
 
+import CategoryCard from '../../components/CategoryCard'
+
+import ForumPostCell from '../../components/ForumPostCell'
+
 import {
   MdOutlineStorefront,
   MdOutlineForum,
@@ -45,7 +49,21 @@ const LandingPage = () => {
               label: 'Forums',
               value: 'forums',
               icon: <MdOutlineForum size={24} />,
-              content: <div>Hi</div>,
+              content: (
+                <div className="flex flex-col gap-4">
+                  <div>Search</div>
+                  <div className="flex flex-row justify-between">
+                    <div className="flex flex-col gap-1">
+                      <CategoryCard />
+                      <CategoryCard />
+                      <CategoryCard />
+                    </div>
+                    <div className="flex flex-col gap-1">
+                      <ForumPostCell />
+                    </div>
+                  </div>
+                </div>
+              ),
             },
             {
               label: 'Events',

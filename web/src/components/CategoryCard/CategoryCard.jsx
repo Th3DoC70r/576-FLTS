@@ -1,8 +1,16 @@
 const CategoryCard = () => {
   return (
-    <div>
-      <h2>{'CategoryCard'}</h2>
-      <p>{'Find me in ./web/src/components/CategoryCard/CategoryCard.jsx'}</p>
+    <div className="flex items-center justify-between self-stretch rounded-r-lg border-l-[5px] border-white border-l-[#B9322F] bg-[#001489] p-4 text-white">
+      <div className="flex flex-col gap-2 self-stretch p-2">
+        <h1 className="text-2xl font-semibold">Category</h1>
+        <p>
+          Long or short category description that shouldn't warp the card at
+          all...
+        </p>
+      </div>
+      <div className="flex items-center justify-center gap-2 self-stretch p-2">
+        <p>Number of posts in category</p>
+      </div>
     </div>
   )
 }
