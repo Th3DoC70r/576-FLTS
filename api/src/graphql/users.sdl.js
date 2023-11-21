@@ -12,11 +12,12 @@ export const schema = gql`
     roles: [String]!
     image: String
     post: [Post]!
+    cart: [CartItem]!
   }
 
   type Query {
     users: [User!]! @requireAuth
-    user(id: Int!): User @requireAuth
+    user(id: Int!): User @skipAuth
   }
 
   input CreateUserInput {

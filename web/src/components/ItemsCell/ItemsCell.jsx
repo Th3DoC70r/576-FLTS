@@ -23,7 +23,6 @@ export const Failure = ({ error }) => (
 )
 
 export const Success = ({ items }) => {
-  console.log(items)
   return items.map((item, index) => (
     <ItemCard
       key={index}
