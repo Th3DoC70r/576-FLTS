@@ -12,7 +12,7 @@ import { useMutation, useQuery } from '@redwoodjs/web'
 import { useAuth } from 'src/auth'
 import { truncate } from 'src/scripts'
 
-const CART_ITEM_QUERY = gql`
+export const CART_ITEM_QUERY = gql`
   query UserQuery($id: Int!) {
     user(id: $id) {
       cart {
@@ -31,7 +31,7 @@ const CART_ITEM_QUERY = gql`
   }
 `
 
-const UPDATE_QUANTITY = gql`
+export const UPDATE_QUANTITY = gql`
   mutation UpdateCartItem($id: Int!, $input: UpdateCartItemInput!) {
     updateCartItem(id: $id, input: $input) {
       id
@@ -40,7 +40,7 @@ const UPDATE_QUANTITY = gql`
   }
 `
 
-const DELETE_CART_ITEM = gql`
+export const DELETE_CART_ITEM = gql`
   mutation DeleteCartItem($id: Int!) {
     deleteCartItem(id: $id) {
       id
@@ -72,6 +72,8 @@ const CartModal = ({ open, setOpen }) => {
 
   let cartArr = structuredClone(cartInfo?.data?.user?.cart)
   cartArr?.sort(sortFunc)
+  let totalItems = 0
+  cartArr.map((item) => (totalItems += item.quantity))
 
   return (
     <Dialog
@@ -82,7 +84,7 @@ const CartModal = ({ open, setOpen }) => {
     >
       <DialogHeader className="items-center justify-center">
         <p className="text-center text-3xl font-bold text-white">
-          Shopping Cart
+          Shopping Cart ({totalItems})
         </p>
       </DialogHeader>
       <DialogBody className="flex max-h-[600px] flex-col gap-2 overflow-auto">
@@ -131,7 +133,7 @@ const CartModal = ({ open, setOpen }) => {
                         })
                       }
                     >
-                      <BiSolidUpArrow />
+                      <BiSolidUpArrow color="Green" />
                     </button>
                     <button
                       disabled={itemObj.quantity === 1}
@@ -146,12 +148,12 @@ const CartModal = ({ open, setOpen }) => {
                         })
                       }
                     >
-                      <BiSolidDownArrow />
+                      <BiSolidDownArrow color="Green" />
                     </button>
                   </div>
                 </div>
                 <button
-                  className="items-center rounded-xl bg-LightBlue px-3 py-1 text-black"
+                  className="h-fit items-center rounded-xl bg-LightBlue px-3 py-1 text-black"
                   onClick={() =>
                     deleteCartItem({
                       variables: {
@@ -160,7 +162,7 @@ const CartModal = ({ open, setOpen }) => {
                     })
                   }
                 >
-                  <RiDeleteBin5Fill />
+                  <RiDeleteBin5Fill color="Red" />
                 </button>
               </div>
             </div>
