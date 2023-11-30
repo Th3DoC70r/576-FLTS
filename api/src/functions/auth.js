@@ -21,13 +21,13 @@ export const handler = async (event, context) => {
     },
 
     // How long the resetToken is valid for, in seconds (default is 24 hours)
-    expires: 60 * 60 * 24,
+    expires: 60 * 60,
 
     errors: {
       // for security reasons you may want to be vague here rather than expose
       // the fact that the email address wasn't found (prevents fishing for
       // valid email addresses)
-      usernameNotFound: 'Username not found',
+      usernameNotFound: 'Username incorrect!',
       // if the user somehow gets around client validation
       usernameRequired: 'Username is required',
     },
@@ -51,15 +51,15 @@ export const handler = async (event, context) => {
 
     errors: {
       usernameOrPasswordMissing: 'Both username and password are required',
-      usernameNotFound: 'Username ${username} not found',
+      usernameNotFound: 'Invalid username and/or password. Please try again!',
       // For security reasons you may want to make this the same as the
       // usernameNotFound error so that a malicious user can't use the error
       // to narrow down if it's the username or password that's incorrect
-      incorrectPassword: 'Incorrect password for ${username}',
+      incorrectPassword: 'Invalid username and/or password. Please try again!',
     },
 
     // How long a user will remain logged in, in seconds
-    expires: 60 * 60 * 24 * 365 * 10,
+    expires: 60 * 60 * 3,
   }
 
   const resetPasswordOptions = {
@@ -72,7 +72,7 @@ export const handler = async (event, context) => {
     },
 
     // If `false` then the new password MUST be different from the current one
-    allowReusedPassword: true,
+    allowReusedPassword: false,
 
     errors: {
       // the resetToken is valid, but expired
@@ -108,7 +108,8 @@ export const handler = async (event, context) => {
           email: username,
           hashedPassword: hashedPassword,
           salt: salt,
-          // name: userAttributes.name
+          name: userAttributes.name,
+          reason: userAttributes.reason,
         },
       })
     },
@@ -141,7 +142,7 @@ export const handler = async (event, context) => {
     authFields: {
       id: 'id',
       username: 'email',
-      hashedPassword: 'password',
+      hashedPassword: 'hashedPassword',
       salt: 'salt',
       resetToken: 'resetToken',
       resetTokenExpiresAt: 'resetTokenExpiresAt',

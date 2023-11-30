@@ -33,4 +33,7 @@ export const User = {
   post: (_obj, { root }) => {
     return db.user.findUnique({ where: { id: root?.id } }).post()
   },
+  cart: (_obj, { root }) => {
+    return db.user.findUnique({ where: { id: root?.id } }).cart()
+  },
 }

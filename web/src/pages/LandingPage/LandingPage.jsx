@@ -1,5 +1,4 @@
-import SqPatch from 'web/public/SqPatch.svg'
-
+import { AiFillInstagram } from 'react-icons/ai'
 import {
   MdOutlineStorefront,
   MdOutlineForum,
@@ -7,19 +6,18 @@ import {
   MdOutlineChecklist,
   MdOutlineEvent,
 } from 'react-icons/md'
-import { AiFillInstagram } from 'react-icons/ai'
+import SqPatch from 'web/public/SqPatch.svg'
 
 import { Link, routes } from '@redwoodjs/router'
 
 import { useAuth } from 'src/auth'
+import CartCell from 'src/components/CartCell/CartCell'
+import ItemsCell from 'src/components/ItemsCell/ItemsCell'
 
 import TabComponent from '../../components/TabComponent'
 
-import ItemsCell from 'src/components/ItemsCell/ItemsCell'
-
 const LandingPage = () => {
   const { isAuthenticated, currentUser } = useAuth()
-
   return (
     <>
       {isAuthenticated ? (
@@ -63,7 +61,11 @@ const LandingPage = () => {
               label: 'Cart',
               value: 'cart',
               icon: <MdOutlineShoppingCart size={24} />,
-              content: <div>Hi</div>,
+              content: (
+                <div className="flex w-full flex-wrap justify-center self-stretch">
+                  <CartCell id={+currentUser.id} />
+                </div>
+              ),
             },
           ]}
           active={'shop'}

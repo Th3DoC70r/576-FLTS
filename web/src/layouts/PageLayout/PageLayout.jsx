@@ -15,7 +15,9 @@ const PageLayout = ({ children }) => {
     <div className="flex min-h-screen flex-col">
       <header className="grid grid-cols-3 items-center border-b-4 border-LightBlue bg-Blue p-4">
         <div className="justify-self-start">
-          <img src={SqPatch} alt="576 FLTS Squadron Patch" />
+          <Link to={routes.landing()}>
+            <img src={SqPatch} alt="576 FLTS Squadron Patch" />
+          </Link>
         </div>
         <div className="justify-self-center">
           <p className="text-4xl font-bold text-white">
@@ -41,7 +43,7 @@ const PageLayout = ({ children }) => {
             <>
               {location.pathname === '/login' ? null : (
                 <Link
-                  className="rounded-xl border border-LightBlue px-3 py-1 text-2xl font-medium text-LightBlue"
+                  className="rounded-xl border border-2 px-5 py-3 text-3xl font-medium text-white"
                   to={routes.login()}
                 >
                   Login

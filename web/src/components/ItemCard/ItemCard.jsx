@@ -2,10 +2,14 @@ import { useState } from 'react'
 
 import { PiArrowRightBold } from 'react-icons/pi'
 
+import CartModal from '../CartModal/CartModal'
 import ItemModal from '../ItemModal/ItemModal'
 
 const ItemCard = ({ name, price, image, itemId, desc, qty }) => {
   const [openItemModal, setOpenItemModal] = useState(false)
+  const [openCartModal, setOpenCartModal] = useState(false)
+
+  const openCart = () => setOpenCartModal(!openCartModal)
 
   const setOpen = () => setOpenItemModal(!openItemModal)
   return (
@@ -20,7 +24,11 @@ const ItemCard = ({ name, price, image, itemId, desc, qty }) => {
           image={image}
           desc={desc}
           stock={qty}
+          openCart={openCart}
         />
+      ) : null}
+      {openCartModal ? (
+        <CartModal open={openCartModal} setOpen={setOpenCartModal} />
       ) : null}
       <div className="flex justify-center">
         <img
@@ -35,7 +43,7 @@ const ItemCard = ({ name, price, image, itemId, desc, qty }) => {
       </div>
       <div className="flex justify-end">
         <button
-          className="flex flex-row items-center gap-2 rounded-lg bg-LightBlue px-3 py-2 text-xl text-black"
+          className="flex flex-row items-center gap-2 rounded-lg bg-LightBlue px-3 py-2 text-xl font-medium text-black"
           onClick={() => setOpen()}
         >
           See details
