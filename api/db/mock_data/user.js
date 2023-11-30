@@ -10,11 +10,10 @@ const generateUser = () => {
   const [hashedPassword, salt] = hashPassword('password')
   users.push({
     name: `${firstName} ${lastName}`,
-    password: hashedPassword,
+    hashedPassword: hashedPassword,
     salt: salt,
     email: faker.internet.email({ firstName, lastName }),
     roles: ['user'],
-    image: faker.image.url(),
     authenticated: faker.datatype.boolean(),
     reason: faker.lorem.sentence(),
     image: faker.image.avatar(),

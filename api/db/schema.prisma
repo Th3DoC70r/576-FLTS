@@ -11,19 +11,21 @@ generator client {
 // Define your own datamodels here and run `yarn redwood prisma migrate dev`
 // to create migrations for them and apply to your dev DB.
 model User {
-  id            Int        @id @default(autoincrement())
-  email         String     @unique
-  name          String
-  password      String
-  salt          String
-  authenticated Boolean?   @default(false)
-  reason        String
-  createdAt     DateTime   @default(now())
-  updatedAt     DateTime   @default(now()) @updatedAt
-  roles         String[]   @default(["user"])
-  image         String?
-  post          Post[]
-  cart          CartItem[]
+  id                  Int        @id @default(autoincrement())
+  email               String     @unique
+  name                String
+  hashedPassword      String     @default("")
+  salt                String     @default("")
+  resetToken          String?
+  resetTokenExpiresAt DateTime?
+  authenticated       Boolean?   @default(false)
+  reason              String
+  createdAt           DateTime   @default(now())
+  updatedAt           DateTime   @default(now()) @updatedAt
+  roles               String[]   @default(["user"])
+  image               String?
+  post                Post[]
+  cart                CartItem[]
 }
 
 model Item {
