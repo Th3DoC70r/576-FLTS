@@ -1,16 +1,16 @@
 import { useState } from 'react'
 
+import { Menu, MenuHandler, MenuItem, MenuList } from '@material-tailwind/react'
 import SqPatch from 'web/public/SqPatch.svg'
 
-import { Link, routes, useLocation } from '@redwoodjs/router'
+import { Link, navigate, routes, useLocation } from '@redwoodjs/router'
 
 import { useAuth } from 'src/auth'
 
 const PageLayout = ({ children }) => {
-  const { isAuthenticated, currentUser } = useAuth()
+  const { isAuthenticated, currentUser, hasRole, logOut } = useAuth()
   const { open, setOpen } = useState(false)
   const location = useLocation()
-
   return (
     <div className="flex min-h-screen flex-col">
       <header className="grid grid-cols-3 items-center border-b-4 border-LightBlue bg-Blue p-4">
@@ -32,12 +32,32 @@ const PageLayout = ({ children }) => {
                 src={currentUser?.image}
                 alt={currentUser?.name}
               />
-              <button
-                className="text-3xl font-semibold text-white"
-                onClick={() => setOpen(!open)}
+              <Menu
+                placement="bottom"
+                animate={{ mount: { y: 0 }, unmount: { y: 25 } }}
               >
-                {currentUser?.name}
-              </button>
+                <MenuHandler>
+                  <button
+                    className="text-3xl font-semibold text-white"
+                    onClick={() => setOpen(!open)}
+                  >
+                    {currentUser?.name}
+                  </button>
+                </MenuHandler>
+                <MenuList>
+                  <MenuItem>Profile</MenuItem>
+                  {hasRole(['admin, super']) && (
+                    <MenuItem>Admin Tools</MenuItem>
+                  )}
+                  <MenuItem
+                    onClick={() =>
+                      logOut().then(() => navigate(routes.login()))
+                    }
+                  >
+                    Logout
+                  </MenuItem>
+                </MenuList>
+              </Menu>
             </div>
           ) : (
             <>

@@ -24,6 +24,7 @@ const SignupPage = () => {
   const [password, setPassword] = useState('')
   const [length, setLength] = useState(0)
   const [uppercase, setUppercase] = useState(false)
+  const [lowercase, setLowercase] = useState(false)
   const [special, setSpecial] = useState(false)
   const [hide, setHide] = useState('hidden')
   const [reenter, setReenter] = useState('')
@@ -31,6 +32,7 @@ const SignupPage = () => {
   const { isAuthenticated, signUp } = useAuth()
 
   const checkUppercase = /[A-Z]/
+  const checkLowercase = /[a-z]/
   const checkSpecial = /[\p{P}\p{S}]/u
 
   useEffect(() => {
@@ -42,6 +44,7 @@ const SignupPage = () => {
   useEffect(() => {
     setLength(password.length)
     setUppercase(checkUppercase.test(password))
+    setLowercase(checkLowercase.test(password))
     setSpecial(checkSpecial.test(password))
   }, [password])
 
@@ -104,8 +107,8 @@ const SignupPage = () => {
               <div className="flex flex-col gap-4 p-4">
                 <TextField
                   name="email"
-                  className="w-full rounded-lg border-2 border-LightBlue bg-Blue p-2 text-LightBlue outline-none placeholder:text-LightBlue autofill:text-LightBlue focus:outline-none"
-                  errorClassName="w-full rounded-lg border-2 border-Red bg-Blue p-2 text-Red outline-none placeholder:text-Red focus:outline-none autofill:bg-Blue"
+                  className="w-full rounded-lg border-2 border-LightBlue bg-Blue p-2 text-LightBlue outline-none placeholder:text-LightBlue focus:outline-none"
+                  errorClassName="w-full rounded-lg border-2 border-Red bg-Blue p-2 text-Red outline-none placeholder:text-Red focus:outline-none"
                   placeholder="Enter your email address . . ."
                   ref={emailRef}
                   validation={{
@@ -120,8 +123,8 @@ const SignupPage = () => {
 
                 <TextField
                   name="name"
-                  className="w-full rounded-lg border-2 border-LightBlue bg-Blue p-2 text-LightBlue outline-none placeholder:text-LightBlue autofill:bg-Blue focus:outline-none"
-                  errorClassName="w-full rounded-lg border-2 border-Red bg-Blue p-2 text-Red outline-none placeholder:text-Red focus:outline-none autofill:bg-Blue"
+                  className="w-full rounded-lg border-2 border-LightBlue bg-Blue p-2 text-LightBlue outline-none placeholder:text-LightBlue focus:outline-none"
+                  errorClassName="w-full rounded-lg border-2 border-Red bg-Blue p-2 text-Red outline-none placeholder:text-Red focus:outline-none"
                   placeholder="Enter your full name . . ."
                   validation={{
                     required: {
@@ -136,7 +139,9 @@ const SignupPage = () => {
                 <Tooltip
                   content={
                     <div className="flex flex-col">
-                      <p className="text-center underline">Password must:</p>
+                      <p className="text-center underline">
+                        Your password must:
+                      </p>
                       <div className="flex flex-row items-center gap-1">
                         {length >= 8 ? (
                           <FaCheck size={18} color="Green" />
@@ -153,6 +158,14 @@ const SignupPage = () => {
                           <IoCloseSharp size={18} color="Red" />
                         )}
                         <p>Contain at least 1 uppercase character</p>
+                      </div>
+                      <div className="flex flex-row items-center gap-1">
+                        {lowercase ? (
+                          <FaCheck size={18} color="Green" />
+                        ) : (
+                          <IoCloseSharp size={18} color="Red" />
+                        )}
+                        <p>Contain at least 1 lowercase character</p>
                       </div>
                       <div className="flex flex-row items-center gap-1">
                         {special ? (
@@ -174,8 +187,8 @@ const SignupPage = () => {
                 >
                   <PasswordField
                     name="password"
-                    className="w-full rounded-lg border-2 border-LightBlue bg-Blue p-2 text-LightBlue outline-none placeholder:text-LightBlue autofill:bg-Blue focus:outline-none"
-                    errorClassName="w-full rounded-lg border-2 border-Red bg-Blue p-2 text-Red outline-none placeholder:text-Red focus:outline-none autofill:bg-Blue"
+                    className="w-full rounded-lg border-2 border-LightBlue bg-Blue p-2 text-LightBlue outline-none placeholder:text-LightBlue focus:outline-none"
+                    errorClassName="w-full rounded-lg border-2 border-Red bg-Blue p-2 text-Red outline-none placeholder:text-Red focus:outline-none"
                     placeholder="Enter a password . . ."
                     autoComplete="current-password"
                     validation={{
@@ -194,8 +207,8 @@ const SignupPage = () => {
 
                 <PasswordField
                   name="reEnterPassword"
-                  className="w-full rounded-lg border-2 border-LightBlue bg-Blue p-2 text-LightBlue outline-none placeholder:text-LightBlue autofill:bg-Blue focus:outline-none"
-                  errorClassName="w-full rounded-lg border-2 border-Red bg-Blue p-2 text-Red outline-none placeholder:text-Red focus:outline-none autofill:bg-Blue"
+                  className="w-full rounded-lg border-2 border-LightBlue bg-Blue p-2 text-LightBlue outline-none placeholder:text-LightBlue focus:outline-none"
+                  errorClassName="w-full rounded-lg border-2 border-Red bg-Blue p-2 text-Red outline-none placeholder:text-Red focus:outline-none"
                   placeholder="Re-enter the password . . ."
                   autoComplete="current-password"
                   validation={{
@@ -247,9 +260,9 @@ const SignupPage = () => {
                 >
                   <TextField
                     name="reason"
-                    className="w-full rounded-lg border-2 border-LightBlue bg-Blue p-2 text-LightBlue outline-none placeholder:text-LightBlue autofill:bg-Blue focus:outline-none"
-                    errorClassName="w-full rounded-lg border-2 border-Red bg-Blue p-2 text-Red outline-none placeholder:text-Red focus:outline-none autofill:bg-Blue"
-                    placeholder="Why should you be a member?"
+                    className="w-full rounded-lg border-2 border-LightBlue bg-Blue p-2 text-LightBlue outline-none placeholder:text-LightBlue focus:outline-none"
+                    errorClassName="w-full rounded-lg border-2 border-Red bg-Blue p-2 text-Red outline-none placeholder:text-Red focus:outline-none"
+                    placeholder="Please tell our administrator why should you be a member?"
                     validation={{
                       required: {
                         value: true,
