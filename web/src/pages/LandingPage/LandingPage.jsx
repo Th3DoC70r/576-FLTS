@@ -15,6 +15,7 @@ import CartCell from 'src/components/CartCell/CartCell'
 import ItemsCell from 'src/components/ItemsCell/ItemsCell'
 
 import TabComponent from '../../components/TabComponent'
+import EventPage from '../EventPage/EventPage'
 
 const LandingPage = () => {
   const { isAuthenticated, currentUser } = useAuth()
@@ -49,7 +50,7 @@ const LandingPage = () => {
               label: 'Events',
               value: 'events',
               icon: <MdOutlineEvent size={24} />,
-              content: <div>Hi</div>,
+              content: <EventPage />,
             },
             {
               label: 'Top Hand',
@@ -72,7 +73,11 @@ const LandingPage = () => {
         />
       ) : (
         <div className="m-4 flex flex-col items-center justify-center gap-4">
-          <img src={SqPatch} alt="576th FLTS Squadron Patch" />
+          <img
+            src={SqPatch}
+            alt="576th FLTS Squadron Patch"
+            className="h-[350px]"
+          />
           <div className="flex flex-row gap-4">
             <Link
               className="rounded-lg bg-Blue px-3 py-1 text-2xl font-semibold text-white"

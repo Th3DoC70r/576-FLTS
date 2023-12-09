@@ -45,19 +45,25 @@ export const Success = ({ user }) => {
   return (
     <div className="flex flex-col gap-4">
       <div className="flex flex-col gap-4">
-        {cartArr?.map((item, index) => (
-          <CartItemCard
-            key={index}
-            id={item.id}
-            itemId={item.item.id}
-            name={item.item.name}
-            desc={item.item.description}
-            image={item.item.image}
-            stock={item.item.stock}
-            quantity={item.quantity}
-            price={item.item.price}
-          />
-        ))}
+        {cartArr.length ? (
+          cartArr?.map((item, index) => (
+            <CartItemCard
+              key={index}
+              id={item.id}
+              itemId={item.item.id}
+              name={item.item.name}
+              desc={item.item.description}
+              image={item.item.image}
+              stock={item.item.stock}
+              quantity={item.quantity}
+              price={item.item.price}
+            />
+          ))
+        ) : (
+          <p className="rounded-xl bg-Blue p-4 text-3xl font-semibold text-white">
+            You're cart is currently empty!
+          </p>
+        )}
       </div>
       <div className="flex w-full flex-row items-center justify-between rounded-xl bg-Blue p-4">
         <p className="text-3xl font-semibold text-white">
