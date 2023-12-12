@@ -15,9 +15,10 @@ import PageLayout from './layouts/PageLayout/PageLayout'
 const Routes = () => {
   return (
     <Router useAuth={useAuth}>
-      <Route path="/event" page={EventPage} name="event" />
-      <Route path="/cart" page={CartPage} name="cart" />
       <Set wrap={PageLayout}>
+        <Route path="/event" page={EventPage} name="event" />
+        <Route path="/cart" page={CartPage} name="cart" />
+        <Route path="/profile" page={ProfilePage} name="profile" />
         <Route path="/" page={LandingPage} name="landing" />
         <Route path="/shop" page={ShopPage} name="shop" />
         <Route path="/login" page={LoginPage} name="login" />

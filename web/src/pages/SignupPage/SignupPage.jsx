@@ -95,7 +95,7 @@ const SignupPage = () => {
         className="flex h-screen max-h-[calc(100vh-38px)] w-full flex-col justify-center bg-cover p-4"
       >
         <Toaster toastOptions={{ className: 'rw-toast', duration: 6000 }} />
-        <div className="w-1/3 items-center justify-center rounded-xl bg-Blue py-4 opacity-75">
+        <div className="w-2/5 items-center justify-center rounded-xl bg-Blue py-4 opacity-75">
           <div className="flex flex-col gap-4 rounded-t-xl bg-Blue">
             <header className="w-full rounded-t-xl border-b border-LightBlue">
               <h2 className="text-center text-3xl text-LightBlue">Register</h2>
@@ -262,7 +262,7 @@ const SignupPage = () => {
                     name="reason"
                     className="w-full rounded-lg border-2 border-LightBlue bg-Blue p-2 text-LightBlue outline-none placeholder:text-LightBlue focus:outline-none"
                     errorClassName="w-full rounded-lg border-2 border-Red bg-Blue p-2 text-Red outline-none placeholder:text-Red focus:outline-none"
-                    placeholder="Please tell our administrator why should you be a member?"
+                    placeholder="Tell our administrator why you should be a member?"
                     validation={{
                       required: {
                         value: true,
@@ -278,17 +278,20 @@ const SignupPage = () => {
                 <div className="flex flex-row items-center justify-center gap-4">
                   <Link
                     to={routes.landing()}
-                    className="rounded-lg border border-LightBlue px-3 py-1 text-lg text-LightBlue"
+                    className="rounded-lg border border-LightBlue px-3 py-1 text-lg text-LightBlue focus:outline-LightBlue"
                   >
                     Cancel
                   </Link>
-                  <Submit className="rounded-lg border border-LightBlue px-3 py-1 text-lg text-LightBlue">
+                  <Submit className="rounded-lg border border-LightBlue px-3 py-1 text-lg text-LightBlue focus:outline-LightBlue">
                     Signup
                   </Submit>
                 </div>
                 <div className="text-center text-base text-LightBlue">
                   <span>Don&apos;t have an account?</span>{' '}
-                  <Link to={routes.login()} className="rw-link">
+                  <Link
+                    to={routes.login()}
+                    className="rw-link focus:outline-LightBlue"
+                  >
                     Login!
                   </Link>
                 </div>
