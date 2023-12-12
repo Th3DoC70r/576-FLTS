@@ -114,10 +114,11 @@ const ItemModal = ({
             Cancel
           </button>
           <button
-            className="rounded-lg bg-LightBlue px-3 py-1 text-xl font-medium text-black"
-            onClick={() => {
+            className="rounded-lg bg-LightBlue px-3 py-1 text-xl font-medium text-black disabled:opacity-80"
+            disabled={stock === 0 ? true : false}
+            onClick={async () => {
               itemArr?.length
-                ? updateCartItem({
+                ? await updateCartItem({
                     variables: {
                       id: cartItem[0].id,
                       input: {
@@ -125,7 +126,7 @@ const ItemModal = ({
                       },
                     },
                   })
-                : createCartItem({
+                : await createCartItem({
                     variables: {
                       input: {
                         itemId: id,

@@ -17,7 +17,11 @@ const EventModal = ({ open, setOpen, event }) => {
       className="rounded-xl bg-Blue p-6"
     >
       {event?.flier ? (
-        <img src={event.image} alt={event.title} className="h-full w-full" />
+        <img
+          src={event.image}
+          alt={event.title}
+          className="h-full w-full rounded-xl border-2 border-LightBlue"
+        />
       ) : (
         <>
           <DialogHeader className="flex items-center justify-center rounded-xl bg-LightBlue">

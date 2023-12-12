@@ -1,3 +1,5 @@
+import { useEffect, useState } from 'react'
+
 import {
   Dialog,
   DialogBody,
@@ -50,11 +52,17 @@ export const DELETE_CART_ITEM = gql`
 
 const CartModal = ({ open, setOpen }) => {
   const { currentUser, isAuthenticated } = useAuth()
-  const handleOpen = () => setOpen(!open)
+  const [cartItems, setCartItems] = useState([])
 
   const cartInfo = useQuery(CART_ITEM_QUERY, {
     variables: { id: currentUser.id },
   })
+
+  useEffect(() => {
+    setCartItems(cartInfo?.data.user.cart)
+  }, [cartInfo])
+
+  const handleOpen = () => setOpen(!open)
 
   const [deleteCartItem] = useMutation(DELETE_CART_ITEM, {
     refetchQueries: [
@@ -88,8 +96,8 @@ const CartModal = ({ open, setOpen }) => {
         </p>
       </DialogHeader>
       <DialogBody className="flex max-h-[600px] flex-col gap-2 overflow-auto">
-        {cartInfo?.data?.user?.cart?.length ? (
-          cartArr.map((itemObj, index) => (
+        {cartItems.length ? (
+          cartItems.map((itemObj, index) => (
             <div
               className="flex flex-row justify-between rounded-xl bg-LightBlue"
               key={index}

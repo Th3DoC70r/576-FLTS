@@ -4,13 +4,16 @@ import { Menu, MenuHandler, MenuItem, MenuList } from '@material-tailwind/react'
 import SqPatch from 'web/public/SqPatch.svg'
 
 import { Link, navigate, routes, useLocation } from '@redwoodjs/router'
+import { useQuery } from '@redwoodjs/web'
 
 import { useAuth } from 'src/auth'
+import { USER_QUERY } from 'src/pages/ProfilePage/ProfilePage'
 
 const PageLayout = ({ children }) => {
   const { isAuthenticated, currentUser, hasRole, logOut } = useAuth()
   const { open, setOpen } = useState(false)
   const location = useLocation()
+  const userInfo = useQuery(USER_QUERY, { variables: { id: currentUser?.id } })
   return (
     <div className="flex min-h-screen flex-col">
       <header className="grid grid-cols-3 items-center border-b-4 border-LightBlue bg-Blue p-4">
@@ -28,9 +31,9 @@ const PageLayout = ({ children }) => {
           {isAuthenticated ? (
             <div className="flex flex-row items-center gap-4">
               <img
-                className="h-16 w-16"
-                src={currentUser?.image}
-                alt={currentUser?.name}
+                className="h-16 w-16 text-white"
+                src={userInfo?.data?.user?.image}
+                alt={userInfo?.data?.user?.name}
               />
               <Menu
                 placement="bottom"
@@ -41,11 +44,13 @@ const PageLayout = ({ children }) => {
                     className="text-3xl font-semibold text-white"
                     onClick={() => setOpen(!open)}
                   >
-                    {currentUser?.name}
+                    {userInfo?.data?.user?.name}
                   </button>
                 </MenuHandler>
                 <MenuList>
-                  <MenuItem>Profile</MenuItem>
+                  <MenuItem onClick={() => navigate(routes.profile())}>
+                    Profile
+                  </MenuItem>
                   {hasRole(['admin, super']) && (
                     <MenuItem>Admin Tools</MenuItem>
                   )}

@@ -96,7 +96,7 @@ const LoginPage = () => {
                   <div className="rw-forgot-link">
                     <Link
                       to={routes.forgotPassword()}
-                      className="text-sm text-LightBlue hover:underline"
+                      className="text-sm text-LightBlue hover:underline focus:outline-LightBlue"
                     >
                       Forgot Password?
                     </Link>
@@ -110,17 +110,20 @@ const LoginPage = () => {
                 <div className="flex flex-row items-center justify-center gap-4">
                   <Link
                     to={routes.landing()}
-                    className="rounded-lg border border-LightBlue px-3 py-1 text-lg text-LightBlue"
+                    className="rounded-lg border border-LightBlue px-3 py-1 text-lg text-LightBlue focus:outline-LightBlue"
                   >
                     Cancel
                   </Link>
-                  <Submit className="rounded-lg border border-LightBlue px-3 py-1 text-lg text-LightBlue">
+                  <Submit className="rounded-lg border border-LightBlue px-3 py-1 text-lg text-LightBlue focus:outline-LightBlue">
                     Login
                   </Submit>
                 </div>
                 <div className="text-center text-base text-LightBlue">
                   <span>Don&apos;t have an account?</span>{' '}
-                  <Link to={routes.signup()} className="rw-link">
+                  <Link
+                    to={routes.signup()}
+                    className="rw-link focus:outline-LightBlue"
+                  >
                     Sign up!
                   </Link>
                 </div>
