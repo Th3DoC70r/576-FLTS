@@ -16,6 +16,7 @@ const Routes = () => {
   return (
     <Router useAuth={useAuth}>
       <Set wrap={PageLayout}>
+        <Route path="/admin-tools" page={AdminToolsPage} name="adminTools" />
         <Route path="/event" page={EventPage} name="event" />
         <Route path="/cart" page={CartPage} name="cart" />
         <Route path="/profile" page={ProfilePage} name="profile" />

@@ -31,7 +31,7 @@ const PageLayout = ({ children }) => {
           {isAuthenticated ? (
             <div className="flex flex-row items-center gap-4">
               <img
-                className="h-16 w-16 text-white"
+                className="h-16 w-16 rounded-lg text-white"
                 src={userInfo?.data?.user?.image}
                 alt={userInfo?.data?.user?.name}
               />
@@ -41,7 +41,7 @@ const PageLayout = ({ children }) => {
               >
                 <MenuHandler>
                   <button
-                    className="text-3xl font-semibold text-white"
+                    className="text-3xl font-semibold text-white focus:outline-LightBlue"
                     onClick={() => setOpen(!open)}
                   >
                     {userInfo?.data?.user?.name}
@@ -51,8 +51,10 @@ const PageLayout = ({ children }) => {
                   <MenuItem onClick={() => navigate(routes.profile())}>
                     Profile
                   </MenuItem>
-                  {hasRole(['admin, super']) && (
-                    <MenuItem>Admin Tools</MenuItem>
+                  {hasRole(['admin', 'super']) && (
+                    <MenuItem onClick={() => navigate(routes.adminTools())}>
+                      Admin Tools
+                    </MenuItem>
                   )}
                   <MenuItem
                     onClick={() =>

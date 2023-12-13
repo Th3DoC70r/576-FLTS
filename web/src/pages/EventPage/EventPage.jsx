@@ -6,7 +6,7 @@ import 'react-big-calendar/lib/css/react-big-calendar.css'
 import { FaAngleLeft, FaAngleRight } from 'react-icons/fa'
 import 'react-big-calendar/lib/sass/styles.scss'
 
-import { MetaTags, useQuery } from '@redwoodjs/web'
+import { useQuery } from '@redwoodjs/web'
 
 import EventModal from 'src/components/EventModal/EventModal'
 
@@ -41,11 +41,13 @@ const EventPage = () => {
         <div className="flex flex-row gap-4">
           <div className="flex flex-row gap-2">
             <div className="min-h-[25px] min-w-[25px] rounded-lg bg-Green"></div>
-            <p className="text-xl font-semibold text-black">Squadron Event</p>
+            <p className="text-xl font-semibold text-black">
+              Official Function
+            </p>
           </div>
           <div className="flex flex-row gap-2">
             <div className="min-h-[25px] min-w-[25px] rounded-lg bg-LightBlue"></div>
-            <p className="text-xl font-semibold text-black">Morale Event</p>
+            <p className="text-xl font-semibold text-black">Special Event</p>
           </div>
         </div>
         <div className="absolute left-[41.5%] top-[5.25%] flex flex-row gap-4">
