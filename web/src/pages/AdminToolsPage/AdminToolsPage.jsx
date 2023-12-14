@@ -9,6 +9,7 @@ import { navigate, routes } from '@redwoodjs/router'
 import { MetaTags } from '@redwoodjs/web'
 
 import { useAuth } from 'src/auth'
+import AdminEvent from 'src/components/AdminEvent/AdminEvent'
 import AdminTabComponent from 'src/components/AdminTabComponent/AdminTabComponent'
 
 const AdminToolsPage = () => {
@@ -24,11 +25,7 @@ const AdminToolsPage = () => {
                 label: 'Events',
                 value: 'events',
                 icon: <MdOutlineEvent size={24} />,
-                content: (
-                  <div className="flex w-full flex-wrap justify-center self-stretch">
-                    Butts
-                  </div>
-                ),
+                content: <AdminEvent />,
               },
               {
                 label: 'Items',

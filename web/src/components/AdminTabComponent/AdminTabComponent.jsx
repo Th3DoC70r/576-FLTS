@@ -8,10 +8,7 @@ import {
   TabsHeader,
 } from '@material-tailwind/react'
 
-import { useAuth } from 'src/auth'
-
 const AdminTabComponent = ({ data, active }) => {
-  const { currentUser } = useAuth()
   const [activeTab, setActiveTab] = useState(active)
   return (
     <Tabs
