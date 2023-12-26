@@ -32,7 +32,7 @@ export const Failure = ({ error }) => (
 
 export const Success = ({ events }) => {
   const [activeTab, setActiveTab] = useState('currentEvents')
-  const [search, setSearch] = useState('')
+  // const [search, setSearch] = useState('')
 
   return (
     <div className="flex flex-col gap-4">
@@ -70,6 +70,19 @@ export const Success = ({ events }) => {
           >
             <div className="flex flex-row items-center gap-2 p-1">
               <span className="inline-block">Past Events</span>
+            </div>
+          </Tab>
+          <Tab
+            value="approvalEvents"
+            onClick={() => setActiveTab('approvalEvents')}
+            className={`h-1/8 w-fit rounded-lg rounded-b-none border border-b-0 border-LightBlue transition hover:text-Green hover:underline ${
+              activeTab === 'approvalEvents'
+                ? 'bg-LightBlue text-black transition'
+                : 'bg-transparent text-LightBlue hover:text-Green'
+            }`}
+          >
+            <div className="flex flex-row items-center gap-2 p-1">
+              <span className="inline-block">Approve Events</span>
             </div>
           </Tab>
         </TabsHeader>

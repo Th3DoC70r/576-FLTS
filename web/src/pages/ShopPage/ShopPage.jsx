@@ -5,7 +5,7 @@ import ItemsCell from 'src/components/ItemsCell/ItemsCell'
 const ShopPage = () => {
   return (
     <div className="flex flex-wrap justify-center">
-      <ItemsCell />
+      <ItemsCell source={'shop'} />
     </div>
   )
 }

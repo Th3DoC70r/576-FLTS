@@ -9,7 +9,9 @@ import { navigate, routes } from '@redwoodjs/router'
 import { MetaTags } from '@redwoodjs/web'
 
 import { useAuth } from 'src/auth'
+import AdminEditItem from 'src/components/AdminEditItem/AdminEditItem'
 import AdminEvent from 'src/components/AdminEvent/AdminEvent'
+import AdminItems from 'src/components/AdminItems/AdminItems'
 import AdminTabComponent from 'src/components/AdminTabComponent/AdminTabComponent'
 
 const AdminToolsPage = () => {
@@ -31,11 +33,7 @@ const AdminToolsPage = () => {
                 label: 'Items',
                 value: 'items',
                 icon: <MdOutlineStorefront size={24} />,
-                content: (
-                  <div className="flex w-full flex-wrap justify-center self-stretch">
-                    Butts
-                  </div>
-                ),
+                content: <AdminItems />,
               },
               {
                 label: 'Top Hand',
@@ -43,7 +41,7 @@ const AdminToolsPage = () => {
                 icon: <MdOutlineChecklist size={24} />,
                 content: (
                   <div className="flex w-full flex-wrap justify-center self-stretch">
-                    Butts
+                    <AdminEditItem />
                   </div>
                 ),
               },

@@ -33,8 +33,8 @@ export const schema = gql`
   }
 
   type Mutation {
-    createItem(input: CreateItemInput!): Item! @requireAuth
-    updateItem(id: Int!, input: UpdateItemInput!): Item! @requireAuth
-    deleteItem(id: Int!): Item! @requireAuth
+    createItem(input: CreateItemInput!): Item! @skipAuth
+    updateItem(id: Int!, input: UpdateItemInput!): Item! @skipAuth
+    deleteItem(id: Int!): Item! @skipAuth
   }
 `

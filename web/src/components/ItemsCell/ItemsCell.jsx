@@ -1,3 +1,6 @@
+import { useLocation } from '@redwoodjs/router'
+
+import AdminItemCard from '../AdminItemCard/AdminItemCard'
 import ItemCard from '../ItemCard/ItemCard'
 
 export const QUERY = gql`
@@ -23,16 +26,31 @@ export const Failure = ({ error }) => (
 )
 
 export const Success = ({ items }) => {
-  return items.map((item, index) => (
-    <ItemCard
-      key={index}
-      itemId={item.id}
-      name={item.name}
-      desc={item.description}
-      price={item.price}
-      type={item.type}
-      qty={item.stock}
-      image={item.image}
-    />
-  ))
+  const location = useLocation()
+
+  return location.pathname === '/'
+    ? items.map((item, index) => (
+        <ItemCard
+          key={index}
+          itemId={item.id}
+          name={item.name}
+          desc={item.description}
+          price={item.price}
+          type={item.type}
+          qty={item.stock}
+          image={item.image}
+        />
+      ))
+    : items.map((item, index) => (
+        <AdminItemCard
+          key={index}
+          itemId={item.id}
+          name={item.name}
+          desc={item.description}
+          price={item.price}
+          type={item.type}
+          qty={item.stock}
+          image={item.image}
+        />
+      ))
 }
