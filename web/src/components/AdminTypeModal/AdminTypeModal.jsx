@@ -16,6 +16,7 @@ const AdminTypeModal = ({ mainTypes, setTypes, open, setOpen }) => {
   useEffect(() => {
     setTypeArr(mainTypes)
   }, [mainTypes])
+
   return (
     <Dialog open={open} handler={handler} className="rounded-xl bg-Blue">
       <DialogHeader className="flex justify-center rounded-xl">

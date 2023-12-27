@@ -25,7 +25,7 @@ export const Failure = ({ error }) => (
   <div style={{ color: 'red' }}>Error: {error?.message}</div>
 )
 
-export const Success = ({ items }) => {
+export const Success = ({ items, open, setOpen, setItemInfo }) => {
   const location = useLocation()
 
   return location.pathname === '/'
@@ -51,6 +51,9 @@ export const Success = ({ items }) => {
           type={item.type}
           qty={item.stock}
           image={item.image}
+          open={open}
+          setOpen={setOpen}
+          setItemInfo={setItemInfo}
         />
       ))
 }

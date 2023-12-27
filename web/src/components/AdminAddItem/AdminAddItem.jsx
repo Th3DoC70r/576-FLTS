@@ -55,7 +55,7 @@ const AdminAddItem = ({ open, setOpen }) => {
         setTypes={setTypes}
       />
       <p className="text-center text-3xl font-semibold text-white">
-        Add A New Item
+        Add a New Item
       </p>
       <Form onSubmit={onSubmit} className="flex flex-col gap-4">
         <TextField
