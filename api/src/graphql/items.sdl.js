@@ -27,7 +27,7 @@ export const schema = gql`
     name: String
     description: String
     price: String
-    type: [String]!
+    type: [String]
     image: String
     stock: Int
   }

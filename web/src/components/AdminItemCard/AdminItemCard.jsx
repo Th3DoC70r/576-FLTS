@@ -92,7 +92,7 @@ const AdminItemCard = ({
         </div>
         <button
           className="flex flex-row items-center gap-1 rounded-lg border border-LightBlue bg-Blue px-3 py-2 text-xl font-semibold text-LightBlue"
-          onClick={() => setOpen(!open)}
+          onClick={() => setOpenModal(!openModal)}
         >
           See details
           <PiArrowRightBold size={26} color="#A3C7D2" />

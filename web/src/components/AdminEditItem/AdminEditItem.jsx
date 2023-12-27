@@ -11,7 +11,7 @@ import {
 } from '@redwoodjs/forms'
 import { useMutation } from '@redwoodjs/web'
 
-// import AdminTypeModal from '../AdminTypeModal/AdminTypeModal'
+import AdminTypeModal from '../AdminTypeModal/AdminTypeModal'
 import { QUERY } from '../ItemsCell/ItemsCell'
 
 const UPDATE_ITEM = gql`
@@ -28,38 +28,53 @@ const UPDATE_ITEM = gql`
 `
 
 const AdminEditItem = ({ info, open, setOpen }) => {
-  console.log(info)
   const [openType, setOpenType] = useState(false)
-  const [types, setTypes] = useState(info?.types)
+  const [types, setTypes] = useState([])
   const [updateItem] = useMutation(UPDATE_ITEM, {
     refetchQueries: [{ query: QUERY }],
   })
 
-  useEffect(() => {}, [info, types])
+  useEffect(() => {
+    setTypes(info?.type)
+  }, [info])
 
   const onSubmit = async (data) => {
     const { name, description, stock, price } = data
+    let input = {}
+    const craftInputs = () => {
+      if (info.name !== name) {
+        input.name = name
+      }
+      if (info.description !== description) {
+        input.description = description
+      }
+      if (info.type !== types) {
+        input.type = types
+      }
+      if (info.price !== price) {
+        input.price = String(price)
+      }
+      if (info.stock !== stock) {
+        input.stock = stock
+      }
+      return input
+    }
     updateItem({
       variables: {
-        input: {
-          name: name,
-          description: description,
-          image: 'need image bucket',
-          type: types,
-          stock: stock,
-          price: `${price}`,
-        },
+        id: info.id,
+        input: craftInputs(),
       },
     })
+    setOpen(!open)
   }
   return (
     <div className="flex flex-col gap-4 rounded-xl bg-Blue p-4">
-      {/* <AdminTypeModal
+      <AdminTypeModal
         mainTypes={types}
         open={openType}
         setOpen={setOpenType}
         setTypes={setTypes}
-      /> */}
+      />
       <p className="text-center text-3xl font-semibold text-white">
         Edit an Item
       </p>
@@ -88,7 +103,7 @@ const AdminEditItem = ({ info, open, setOpen }) => {
             Type
           </button>
           <div className="m-o flex flex-row gap-4 p-0">
-            {types.map((type, index) => (
+            {types?.map((type, index) => (
               <button
                 type="button"
                 className="rounded-lg border border-LightBlue px-3 py-1 text-xl font-medium text-LightBlue"
@@ -122,12 +137,6 @@ const AdminEditItem = ({ info, open, setOpen }) => {
           name="image"
           className="w-1/4 rounded-lg border-2 border-LightBlue bg-Blue p-2 text-xl text-LightBlue file:rounded-lg file:border-2 file:border-LightBlue file:bg-Blue file:text-xl file:font-medium file:text-LightBlue focus:outline-none"
           errorClassName="w-1/4 rounded-lg border-2 border-Red bg-Blue p-2 text-Red outline-none file:rounded-lg file:border-Red file:bg-Blue file:text-xl file:font-medium file:text-Red placeholder:text-Red focus:outline-none"
-          validation={{
-            required: {
-              value: true,
-              message: 'An image for the item is required',
-            },
-          }}
         />
 
         <FieldError name="image" className="rw-field-error" />
@@ -175,7 +184,7 @@ const AdminEditItem = ({ info, open, setOpen }) => {
             Cancel
           </button>
           <Submit className="rounded-lg border border-LightBlue px-3 py-1 text-lg font-medium text-LightBlue focus:outline-LightBlue">
-            Add Item
+            Update Item
           </Submit>
         </div>
       </Form>

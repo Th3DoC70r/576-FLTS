@@ -26,7 +26,7 @@ const AdminTypeModal = ({ mainTypes, setTypes, open, setOpen }) => {
       </DialogHeader>
       <DialogBody className="flex flex-wrap justify-between">
         {types.map((type, index) =>
-          typeArr.includes(type) ? (
+          typeArr?.includes(type) ? (
             <button
               className="rounded-lg border border-Green px-3 py-1 text-xl font-medium text-Green"
               onClick={() =>
