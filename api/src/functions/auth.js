@@ -27,7 +27,7 @@ export const handler = async (event, context) => {
       // for security reasons you may want to be vague here rather than expose
       // the fact that the email address wasn't found (prevents fishing for
       // valid email addresses)
-      usernameNotFound: 'Username incorrect!',
+      usernameNotFound: 'Invalid email!',
       // if the user somehow gets around client validation
       usernameRequired: 'Username is required',
     },

@@ -24,16 +24,7 @@ const DELETE_CART_ITEM = gql`
   }
 `
 
-const CartItemCard = ({
-  name,
-  desc,
-  image,
-  stock,
-  quantity,
-  price,
-  id,
-  itemId,
-}) => {
+const CartItemCard = ({ name, desc, image, stock, quantity, price, id }) => {
   const { currentUser } = useAuth()
 
   const [deleteCartItem] = useMutation(DELETE_CART_ITEM, {

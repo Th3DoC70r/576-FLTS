@@ -69,7 +69,7 @@ const LandingPage = () => {
               ),
             },
           ]}
-          active={'shop'}
+          active={'events'}
         />
       ) : (
         <div className="m-4 flex flex-col items-center justify-center gap-4">

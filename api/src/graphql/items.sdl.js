@@ -27,14 +27,14 @@ export const schema = gql`
     name: String
     description: String
     price: String
-    type: [String]!
+    type: [String]
     image: String
     stock: Int
   }
 
   type Mutation {
-    createItem(input: CreateItemInput!): Item! @requireAuth
-    updateItem(id: Int!, input: UpdateItemInput!): Item! @requireAuth
-    deleteItem(id: Int!): Item! @requireAuth
+    createItem(input: CreateItemInput!): Item! @skipAuth
+    updateItem(id: Int!, input: UpdateItemInput!): Item! @skipAuth
+    deleteItem(id: Int!): Item! @skipAuth
   }
 `

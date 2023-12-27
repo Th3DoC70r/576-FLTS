@@ -6,13 +6,17 @@ export const truncate = (text, length) => {
   }
 }
 
-{
-  /* <div className="flex flex-row justify-between">
-        <button className="rounded-lg bg-LightBlue px-3 py-1 text-xl text-black">
-          Cancel
-        </button>
-        <button className="rounded-lg bg-LightBlue px-3 py-1 text-xl text-black">
-          Add to Cart
-        </button>
-      </div> */
-}
+export const types = ['Clothing', 'Drinkware', 'Coin', 'Swag', 'Sticker']
+
+export const categories = [
+  'Job',
+  'Training',
+  'General',
+  'Question',
+  'Missiles',
+  'Leadership',
+  'Air Force',
+  'TDY',
+  'Event',
+  'Key Spouse',
+]
