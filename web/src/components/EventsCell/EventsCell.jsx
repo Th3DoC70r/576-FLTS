@@ -7,6 +7,8 @@ import { FaPlus, FaRegTrashAlt } from 'react-icons/fa'
 import { FaCheck } from 'react-icons/fa6'
 import { MdEdit, MdKeyboardArrowDown, MdKeyboardArrowUp } from 'react-icons/md'
 
+import { useMutation } from '@redwoodjs/web'
+
 export const QUERY = gql`
   query EventsQuery {
     events {
@@ -22,6 +24,15 @@ export const QUERY = gql`
   }
 `
 
+const DELETE_EVENT = gql`
+  mutation DeleteEventMutation($id: Int!) {
+    deleteEvent(id: $id) {
+      id
+      title
+    }
+  }
+`
+
 export const Loading = () => <div>Loading...</div>
 
 export const Empty = () => <div>Empty</div>
@@ -30,9 +41,21 @@ export const Failure = ({ error }) => (
   <div style={{ color: 'red' }}>Error: {error?.message}</div>
 )
 
-export const Success = ({ events }) => {
+export const Success = ({
+  events,
+  open,
+  setOpen,
+  openEdit,
+  setOpenEdit,
+  setEvent,
+  openCopy,
+  setOpenCopy,
+}) => {
   const [activeTab, setActiveTab] = useState('currentEvents')
   // const [search, setSearch] = useState('')
+  const [deleteEvent] = useMutation(DELETE_EVENT, {
+    refetchQueries: [{ query: QUERY }],
+  })
 
   return (
     <div className="flex flex-col gap-4">
@@ -88,9 +111,12 @@ export const Success = ({ events }) => {
         </TabsHeader>
         <div className="mt-4 flex flex-row items-center justify-between rounded-lg bg-LightBlue p-2">
           <div className="flex flex-row items-center gap-4">
-            <div className="rounded-lg border-2 border-Blue p-2">
+            <button
+              className="rounded-lg border-2 border-Blue p-2"
+              onClick={() => setOpen(!open)}
+            >
               <FaPlus size={26} color="#001489" />
-            </div>
+            </button>
             <div className="flex flex-row items-center rounded-lg border-2 border-Green px-3">
               <div className="flex flex-col">
                 <button className="m-0 p-0">
@@ -121,13 +147,27 @@ export const Success = ({ events }) => {
                           {event.title}
                         </p>
                         <div className="flex flex-row gap-2">
-                          <button>
+                          <button
+                            onClick={() => {
+                              setEvent(event)
+                              setOpenCopy(!openCopy)
+                            }}
+                          >
                             <BiSolidCopy size={24} color="#00843D" />
                           </button>
-                          <button>
+                          <button
+                            onClick={() => {
+                              setEvent(event)
+                              setOpenEdit(!openEdit)
+                            }}
+                          >
                             <MdEdit size={24} color="#FFCD00" />
                           </button>
-                          <button>
+                          <button
+                            onClick={() =>
+                              deleteEvent({ variables: { id: event.id } })
+                            }
+                          >
                             <FaRegTrashAlt size={24} color="#B9322F" />
                           </button>
                         </div>
@@ -174,13 +214,27 @@ export const Success = ({ events }) => {
                         {event.title}
                       </p>
                       <div className="flex flex-row gap-2">
-                        <button>
+                        <button
+                          onClick={() => {
+                            setEvent(event)
+                            setOpenCopy(!openCopy)
+                          }}
+                        >
                           <BiSolidCopy size={24} color="#00843D" />
                         </button>
-                        <button>
+                        <button
+                          onClick={() => {
+                            setEvent(event)
+                            setOpenEdit(!openEdit)
+                          }}
+                        >
                           <MdEdit size={24} color="#FFCD00" />
                         </button>
-                        <button>
+                        <button
+                          onClick={() =>
+                            deleteEvent({ variables: { id: event.id } })
+                          }
+                        >
                           <FaRegTrashAlt size={24} color="#B9322F" />
                         </button>
                       </div>
