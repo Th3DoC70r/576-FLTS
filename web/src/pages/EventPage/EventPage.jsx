@@ -31,9 +31,7 @@ const EventPage = () => {
   const [open, setOpen] = useState(false)
   const [selectedEvent, setSelectedEvent] = useState({})
 
-  useEffect(() => {
-    console.log(selectedEvent)
-  }, [selectedEvent])
+  useEffect(() => {}, [selectedEvent])
 
   const customToolbar = ({ label, onNavigate }) => {
     return (

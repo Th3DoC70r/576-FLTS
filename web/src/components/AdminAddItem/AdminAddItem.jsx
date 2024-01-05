@@ -31,7 +31,7 @@ const AdminAddItem = ({ open, setOpen }) => {
 
   const onSubmit = async (data) => {
     const { name, description, stock, price } = data
-    createItem({
+    await createItem({
       variables: {
         input: {
           name: name,

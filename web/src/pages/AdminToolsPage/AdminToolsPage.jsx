@@ -9,7 +9,6 @@ import { navigate, routes } from '@redwoodjs/router'
 import { MetaTags } from '@redwoodjs/web'
 
 import { useAuth } from 'src/auth'
-import AdminEditItem from 'src/components/AdminEditItem/AdminEditItem'
 import AdminEvent from 'src/components/AdminEvent/AdminEvent'
 import AdminItems from 'src/components/AdminItems/AdminItems'
 import AdminTabComponent from 'src/components/AdminTabComponent/AdminTabComponent'
@@ -41,7 +40,7 @@ const AdminToolsPage = () => {
                 icon: <MdOutlineChecklist size={24} />,
                 content: (
                   <div className="flex w-full flex-wrap justify-center self-stretch">
-                    <AdminEditItem />
+                    <p>Butts</p>
                   </div>
                 ),
               },

@@ -4193,7 +4193,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@popperjs/core@npm:^2.11.6":
+"@popperjs/core@npm:^2.11.6, @popperjs/core@npm:^2.11.8":
   version: 2.11.8
   resolution: "@popperjs/core@npm:2.11.8"
   checksum: 4681e682abc006d25eb380d0cf3efc7557043f53b6aea7a5057d0d1e7df849a00e281cd8ea79c902a35a414d7919621fc2ba293ecec05f413598e0b23d5a1e63
@@ -8533,6 +8533,13 @@ __metadata:
   version: 2.3.2
   resolution: "classnames@npm:2.3.2"
   checksum: cd50ead57b4f97436aaa9f9885c6926323efc7c2bea8e3d4eb10e4e972aa6a1cfca1c7a0e06f8a199ca7498d4339e30bb6002e589e61c9f21248cbf3e8b0b18d
+  languageName: node
+  linkType: hard
+
+"classnames@npm:^2.2.6":
+  version: 2.5.1
+  resolution: "classnames@npm:2.5.1"
+  checksum: afff4f77e62cea2d79c39962980bf316bacb0d7c49e13a21adaadb9221e1c6b9d3cdb829d8bb1b23c406f4e740507f37e1dcf506f7e3b7113d17c5bab787aa69
   languageName: node
   linkType: hard
 
@@ -18013,6 +18020,23 @@ __metadata:
   languageName: node
   linkType: hard
 
+"react-datepicker@npm:^4.25.0":
+  version: 4.25.0
+  resolution: "react-datepicker@npm:4.25.0"
+  dependencies:
+    "@popperjs/core": ^2.11.8
+    classnames: ^2.2.6
+    date-fns: ^2.30.0
+    prop-types: ^15.7.2
+    react-onclickoutside: ^6.13.0
+    react-popper: ^2.3.0
+  peerDependencies:
+    react: ^16.9.0 || ^17 || ^18
+    react-dom: ^16.9.0 || ^17 || ^18
+  checksum: 714fc6cffdf9fa76d1a74581375acb4c86ac81e6c2cde372448ab447370b7e9ffb1840cf388020485028e7b0f43edf82c1cfd2dab7d2c6b964cdd6f4dd560e92
+  languageName: node
+  linkType: hard
+
 "react-dom@npm:18.2.0":
   version: 18.2.0
   resolution: "react-dom@npm:18.2.0"
@@ -18025,7 +18049,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-fast-compare@npm:^3.2.0":
+"react-fast-compare@npm:^3.0.1, react-fast-compare@npm:^3.2.0":
   version: 3.2.2
   resolution: "react-fast-compare@npm:3.2.2"
   checksum: 0bbd2f3eb41ab2ff7380daaa55105db698d965c396df73e6874831dbafec8c4b5b08ba36ff09df01526caa3c61595247e3269558c284e37646241cba2b90a367
@@ -18115,6 +18139,16 @@ __metadata:
   languageName: node
   linkType: hard
 
+"react-onclickoutside@npm:^6.13.0":
+  version: 6.13.0
+  resolution: "react-onclickoutside@npm:6.13.0"
+  peerDependencies:
+    react: ^15.5.x || ^16.x || ^17.x || ^18.x
+    react-dom: ^15.5.x || ^16.x || ^17.x || ^18.x
+  checksum: 2013471d03965e3c89ead649063bda246a8e9ba72b7be1dbf00642c6c8a34a0142e951b1db3cf73ac53f34f459b772132eff6f7b89f4cde51c35740be6617161
+  languageName: node
+  linkType: hard
+
 "react-overlays@npm:^5.2.1":
   version: 5.2.1
   resolution: "react-overlays@npm:5.2.1"
@@ -18131,6 +18165,20 @@ __metadata:
     react: ">=16.3.0"
     react-dom: ">=16.3.0"
   checksum: 61836490040cfcdebc792b6eddcfac47b7b7e159f99304165371e9eb389a6875f20ddba3433421413ccfb918e8da6042ab2829f9b1f6f5dd9f8476aa16ddcfbe
+  languageName: node
+  linkType: hard
+
+"react-popper@npm:^2.3.0":
+  version: 2.3.0
+  resolution: "react-popper@npm:2.3.0"
+  dependencies:
+    react-fast-compare: ^3.0.1
+    warning: ^4.0.2
+  peerDependencies:
+    "@popperjs/core": ^2.0.0
+    react: ^16.8.0 || ^17 || ^18
+    react-dom: ^16.8.0 || ^17 || ^18
+  checksum: 23f93540537ca4c035425bb8d5e51b11131fbc921d7ac1d041d0ae557feac8c877f3a012d36b94df8787803f52ed81e6df9257ac9e58719875f7805518d6db3f
   languageName: node
   linkType: hard
 
@@ -21506,7 +21554,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"warning@npm:^4.0.3":
+"warning@npm:^4.0.2, warning@npm:^4.0.3":
   version: 4.0.3
   resolution: "warning@npm:4.0.3"
   dependencies:
@@ -21610,6 +21658,7 @@ __metadata:
     prop-types: 15.8.1
     react: 18.2.0
     react-big-calendar: ^1.8.5
+    react-datepicker: ^4.25.0
     react-dom: 18.2.0
     react-icons: ^4.11.0
     sass: ^1.69.5
