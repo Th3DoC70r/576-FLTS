@@ -9,6 +9,7 @@ CREATE TABLE "User" (
     "resetTokenExpiresAt" TIMESTAMP(3),
     "authenticated" BOOLEAN DEFAULT false,
     "reason" TEXT NOT NULL,
+    "approved" BOOLEAN NOT NULL DEFAULT false,
     "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "updatedAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "roles" TEXT[] DEFAULT ARRAY['user']::TEXT[],

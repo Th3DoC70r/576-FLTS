@@ -15,6 +15,7 @@ export const USER_QUERY = gql`
       image
       email
       roles
+      authenticated
       post {
         id
         title

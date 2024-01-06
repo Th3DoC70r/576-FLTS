@@ -14,16 +14,16 @@ model User {
   id                  Int        @id @default(autoincrement())
   email               String     @unique
   name                String
+  authenticated       Boolean?   @default(false)
+  reason              String
+  image               String?
+  roles               String[]   @default(["user"])
+  createdAt           DateTime   @default(now())
+  updatedAt           DateTime   @default(now()) @updatedAt
   hashedPassword      String     @default("")
   salt                String     @default("")
   resetToken          String?
   resetTokenExpiresAt DateTime?
-  authenticated       Boolean?   @default(false)
-  reason              String
-  createdAt           DateTime   @default(now())
-  updatedAt           DateTime   @default(now()) @updatedAt
-  roles               String[]   @default(["user"])
-  image               String?
   post                Post[]
   cart                CartItem[]
 }

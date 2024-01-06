@@ -12,6 +12,7 @@ import { useAuth } from 'src/auth'
 import AdminEvent from 'src/components/AdminEvent/AdminEvent'
 import AdminItems from 'src/components/AdminItems/AdminItems'
 import AdminTabComponent from 'src/components/AdminTabComponent/AdminTabComponent'
+import AdminUsers from 'src/components/AdminUsers/AdminUsers'
 
 const AdminToolsPage = () => {
   const { isAuthenticated } = useAuth()
@@ -48,11 +49,7 @@ const AdminToolsPage = () => {
                 label: 'Users',
                 value: 'users',
                 icon: <MdOutlinePerson size={24} />,
-                content: (
-                  <div className="flex w-full flex-wrap justify-center self-stretch">
-                    Butts
-                  </div>
-                ),
+                content: <AdminUsers />,
               },
             ]}
             active={'events'}

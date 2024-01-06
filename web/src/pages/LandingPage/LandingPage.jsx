@@ -9,6 +9,7 @@ import {
 import SqPatch from 'web/public/SqPatch.svg'
 
 import { Link, routes } from '@redwoodjs/router'
+import { useQuery } from '@redwoodjs/web'
 
 import { useAuth } from 'src/auth'
 import CartCell from 'src/components/CartCell/CartCell'
@@ -16,12 +17,15 @@ import ItemsCell from 'src/components/ItemsCell/ItemsCell'
 
 import TabComponent from '../../components/TabComponent'
 import EventPage from '../EventPage/EventPage'
+import { USER_QUERY } from '../ProfilePage/ProfilePage'
 
 const LandingPage = () => {
   const { isAuthenticated, currentUser } = useAuth()
+  const user = useQuery(USER_QUERY, { variables: { id: currentUser?.id } })
+  console.log(user)
   return (
     <>
-      {isAuthenticated ? (
+      {isAuthenticated && user?.data?.user?.authenticated ? (
         <TabComponent
           data={[
             {
@@ -71,6 +75,12 @@ const LandingPage = () => {
           ]}
           active={'events'}
         />
+      ) : isAuthenticated ? (
+        <p className="text-center text-3xl font-semibold text-black">
+          Your account is still pending authentication. Please allow 3-5
+          business days from account creation for your account to be
+          authenticated.
+        </p>
       ) : (
         <div className="m-4 flex flex-col items-center justify-center gap-4">
           <img

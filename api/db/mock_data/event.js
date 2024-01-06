@@ -5,16 +5,16 @@ const type = ['official', 'morale']
 
 const generateEvents = () => {
   events.push({
-    title: faker.word.words({ min: 1, max: 4}),
-    description: faker.lorem.sentences({ min: 2, max: 4}),
+    title: faker.word.words({ min: 1, max: 4 }),
+    description: faker.lorem.sentences({ min: 2, max: 4 }),
     date: faker.date.between({
       from: Date.now(),
-      to: '2024-01-01T00:00:00:000Z'
+      to: '2024-11-01T00:00:00:000Z',
     }),
     address: faker.location.streetAddress(),
     type: faker.helpers.arrayElements(['official', 'morale'])[0],
     flier: faker.datatype.boolean(),
-    image: faker.image.url()
+    image: faker.image.url(),
   })
 }
 
