@@ -17,6 +17,9 @@ const DELETE_USER = gql`
 const AdminDeleteUser = ({ open, setOpen, user }) => {
   const [deleteUser] = useMutation(DELETE_USER, {
     refetchQueries: [{ query: QUERY }],
+    onCompleted: () => {
+      handler()
+    },
   })
   const handler = () => setOpen(!open)
 

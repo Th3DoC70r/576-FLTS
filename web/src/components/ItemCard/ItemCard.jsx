@@ -13,7 +13,7 @@ const ItemCard = ({ name, price, image, itemId, desc, qty }) => {
 
   const setOpen = () => setOpenItemModal(!openItemModal)
   return (
-    <div className="m-4 flex max-w-[425px] flex-col gap-4 rounded-xl bg-Blue p-4">
+    <div className="m-4 flex max-w-[425px] flex-col justify-center gap-4 rounded-xl bg-Blue p-4">
       {openItemModal ? (
         <ItemModal
           id={itemId}
@@ -30,13 +30,11 @@ const ItemCard = ({ name, price, image, itemId, desc, qty }) => {
       {openCartModal ? (
         <CartModal open={openCartModal} setOpen={setOpenCartModal} />
       ) : null}
-      <div className="flex justify-center">
-        <img
-          className="rounded-xl border border-2 border-LightBlue"
-          src={image}
-          alt={name}
-        />
-      </div>
+      <img
+        className="w-full rounded-xl border border-2 border-LightBlue"
+        src={image}
+        alt={name}
+      />
       <div className="flex flex-row justify-between">
         <p className="text-2xl font-semibold text-white">{name}</p>
         <p className="text-2xl font-semibold text-white">${price}</p>

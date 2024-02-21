@@ -108,7 +108,6 @@ const EventPage = () => {
         style={{ height: 750 }}
         views={{ month: true }}
         onSelectEvent={async (event) => {
-          console.log('selectedEvent:', event)
           await setSelectedEvent(event)
           setOpen(!open)
         }}

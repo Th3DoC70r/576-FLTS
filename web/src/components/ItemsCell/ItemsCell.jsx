@@ -28,7 +28,7 @@ export const Failure = ({ error }) => (
 export const Success = ({ items, open, setOpen, setItemInfo }) => {
   const location = useLocation()
 
-  return location.pathname === '/'
+  return location.pathname === '/shop' || location.pathname === '/'
     ? items.map((item, index) => (
         <ItemCard
           key={index}

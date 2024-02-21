@@ -20,7 +20,7 @@ const Routes = () => {
         <Route path="/event" page={EventPage} name="event" />
         <Route path="/cart" page={CartPage} name="cart" />
         <Route path="/profile" page={ProfilePage} name="profile" />
-        <Route path="/" page={LandingPage} name="landing" />
+        <Route path="/" page={LandingPage} title="Home" name="landing" />
         <Route path="/shop" page={ShopPage} name="shop" />
         <Route path="/login" page={LoginPage} name="login" />
         <Route path="/signup" page={SignupPage} name="signup" />

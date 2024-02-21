@@ -201,7 +201,12 @@ export const Success = ({ users }) => {
                       <button>
                         <MdEdit size={24} color="#FFCD00" />
                       </button>
-                      <button onClick={() => setSelectedUser(user)}>
+                      <button
+                        onClick={() => {
+                          setSelectedUser(user)
+                          setOpen(!open)
+                        }}
+                      >
                         <FaRegTrashAlt size={24} color="#B9322F" />
                       </button>
                     </div>
